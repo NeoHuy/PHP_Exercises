@@ -15,30 +15,23 @@
     sort($arrayOne);
     sort($arrayTwo);
 
-
     $arr = array_merge($arrayOne, $arrayTwo);
     rsort($arr);
 
-    function delete_array($value, $array) {
+    function delete_array($value, &$array) {
         if($value != NULL) {
             $i = 0;
             $length = count($array);
-            echo "Length of array: " . $length . "<br/>";
             for(;$i < $length; $i++) {
                 if($array[$i] == $value) {
                     //array_splice($array, $i, 1);
                     unset($array[$i]);
                 }
             }
-            echo "Length of array after delete: " . count($array) . "<br/>";
-            print_r($array);
+            return $array;
         } else {
             return NULL;
         }
     }
 
-    delete_array(1, $arrayOne);
-    echo "<br/>";
-    print_r($arrayOne);
-    
 ?>
