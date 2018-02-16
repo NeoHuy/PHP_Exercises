@@ -4,7 +4,7 @@
     <meta charset="utf8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Homepage</title>
-    
+    <link rel="stylesheet" href="css/style.css";
 </head>
 <body>
     <h2>Modal login form</h2>
@@ -12,7 +12,7 @@
     <button onclick="document.getElementById('id01').style.display = 'block'" style="width:auto;">
         Login</button>
     <div id="id01" class="modal">
-        <form class="modal-content animate" method="my_account.php">
+        <form class="modal-content animate" action="my_account.php" method="post">
             <div class="imgcontainer">
                 <span onclick="document.getElementById('id01').style.display = 'none'" class="close"
                 title="Close Modal">&times;</span>
