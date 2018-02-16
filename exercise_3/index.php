@@ -4,12 +4,7 @@
     <meta charset="utf8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Homepage</title>
-    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css"/>    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="css/style.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" />
-    <script type="type/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script type="type/javascript" src="js\jquery.leanModal.min.js"></script>
+    
 </head>
 <body>
     <h2>Modal login form</h2>
