@@ -1,55 +1,55 @@
 <!DOCTYPE HTML>
 <HTML>
 <head>
-    <meta charset="utf8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Homepage</title>
-    <link rel="stylesheet" href="css/style.css";
+    <meta name="viewport" content="width=device-width, intitial-scale=1">
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='css/style.css'>
 </head>
 <body>
-    <h2>Modal login form</h2>
-    
-    <button onclick="document.getElementById('id01').style.display = 'block'" style="width:auto;">
-        Login</button>
-    <div id="id01" class="modal">
-        <form class="modal-content animate" action="my_account.php" method="post">
-            <div class="imgcontainer">
-                <span onclick="document.getElementById('id01').style.display = 'none'" class="close"
-                title="Close Modal">&times;</span>
-                <img src="img_avatar2.png" alt="Avatar" class="avatar" />
-            </div>
+    <div class='container'>
+        <h1>Home Page</h1>
+        
+        <div id='modal' class='popupContainer' style="display:none;">
+            <header class="popupHeader">
+                <span class="header_title">Register</span>
+                <span class="modal_close"><i class="fa fa-times"></i></span>
+            </header>
 
-            <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required />
+            <section class="popupBody">
+                <div class="user_register">
+                    <form action="my_account.php" method="post">
+                        <label>Email Address</label>
+                        <input type="email" name="email" placeholder="Enter email address" required>
+                        <br/>
 
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required />
+                        <label>Password</label>
+                        <input type="password" name="psw" placeholder="Enter the password" required>
+                        <br/>
 
-                <button type="submit">Login</button>
-                <label>
-                    <input type="checkbox" checked="checked" name="remember" /> Remember me
-                </label>
-            </div>
+                        <label>Birthday</label>
+                        <input type="text" name="birth">
+                        <br/>
 
-            <div class="container" style="background-color: #f1f1f1;">
-                <button type="button" onclick="document.getElementById('id01').style.display = 'none'"
-                class="cancelbtn">Cancel</button>
-                <span class="psw">Forgot <a href="#">password?</a></span>
-            </div>
-        </form>
+                        <label>Phone number</label>
+                        <input type="text" name="phone">
+
+                        <div class="action_btns">
+                            <div class="one_half"><a href="#" class="btn cancel_btn">Cancel</a></div>
+                            <div class="one_half last"><a href="#" class="btn btn_red">Register</a></div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
     </div>
-    
-    <script>
-        //Get the modal
-        var modal = document.getElementById('id01');
 
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if(event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
+    <script>
+        $('.container').leanModal({
+
+        })
     </script>
 </body>
 </HTML>
