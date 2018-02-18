@@ -38,8 +38,9 @@
                         <br/>
 
                         <div class="action_btns">
-                            <div class="one_half"><a href="#" class="btn cancel_btn">Cancel</a></div>
-                            <div class="one_half last"><button class="btn btn_red" type="submit">Register</button></div>
+                            <div class="one_half last">
+                                <button class="btn btn_red" type="submit">Register</button>
+                            </div>
                         </div>
                     </form>
                 </div>
