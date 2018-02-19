@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
     <h2>Register Form</h2>
     <div id="id01" class="modal">
         <form class="modal-content animate" action="my_account.php">
@@ -28,9 +29,27 @@
                 <label for="phone"><b>Phone</b></label>
                 <input type="text" name="phone">
 
-                <button type="submit">Register</button>
+                <button type="submit" name="register">Register</button>
             </div>
         </form>
     </div>
+    <?php
+        if(!isset($_COOKIE["email"])) {
+    ?>
+            <script>document.getElementById("id01").style.display = 'block';</script>
+    <?php
+        }
+    ?>  
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if(event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </HTML>
