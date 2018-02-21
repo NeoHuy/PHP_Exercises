@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width initial-scale=1">
     <meta charset="UTF-8">
     <title>Register</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,16 +18,16 @@
             </div>
 
             <div class="container">
-                <label for="email"><b>Email</b></label>
+                <label for="email"><b>Email (required)</b></label>
                 <input type="email" placeholder="Enter Email" name="email" required>
 
-                <label for="psw"><b>Password</b></label>
+                <label for="psw"><b>Password (required)</b></label>
                 <input type="password" placeholder="Enter Password" name="psw" required>
 
-                <label for="birth"><b>Birthday</b></label>
-                <input type="text" name="birth">
+                <label for="birth"><b>Birthday (required)</b></label>
+                <input type="text" name="birth" id="datepicker">
                 
-                <label for="phone"><b>Phone</b></label>
+                <label for="phone"><b>Phone (optional)</b></label>
                 <input type="text" name="phone">
 
                 <input type="submit" name="submit" value="Register">
@@ -41,17 +42,24 @@
         }
         
         if($_SERVER["REQUEST_METHOD"] == "POST") {
-            echo "<h1>True</h1>";
-            $cookieTime = time() +  86400 * 30; // 30 days
+            $cookieTime = time() + 10; // 30 days
             setcookie("email", testInput($_POST["email"]), $cookieTime, '/');
             setcookie('psw', testInput($_POST['psw']), $cookieTime, '/');
             setcookie('birth', testInput($_POST['birth']), $cookieTime, '/');
             setcookie('phone', testInput($_POST['phone']), $cookieTime, '/');
-            echo '<h1>' . $_COOKIE['email'] . '</h1>';
-        } else {
-            echo "<h1>False</h1>";
+            
+            //redirect to my_account.php after submit
+            header('Location: my_account.php');
         }
     ?>  
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        // Add datepicker to birthday field
+        $(function() {
+            $('#datepicker').datepicker();
+        })
+    </script>
     <script>
         // Get the modal
         var modal = document.getElementById('id01');
