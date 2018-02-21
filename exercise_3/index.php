@@ -10,7 +10,7 @@
     
     <h2>Register Form</h2>
     <div id="id01" class="modal">
-        <form class="modal-content animate" action="my_account.php">
+        <form class="modal-content animate" method="post" action=" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
             <div class="imgcontainer">
                 <span onclick="document.getElementById('id01').style.display = 'none'"
                 class="close" title="Close Modal">&times;</span>
@@ -29,7 +29,7 @@
                 <label for="phone"><b>Phone</b></label>
                 <input type="text" name="phone">
 
-                <button type="submit" name="register">Register</button>
+                <input type="submit" name="submit" value="Register">
             </div>
         </form>
     </div>
@@ -38,6 +38,18 @@
     ?>
             <script>document.getElementById("id01").style.display = 'block';</script>
     <?php
+        }
+        
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+            echo "<h1>True</h1>";
+            $cookieTime = time() +  86400 * 30; // 30 days
+            setcookie("email", testInput($_POST["email"]), $cookieTime, '/');
+            setcookie('psw', testInput($_POST['psw']), $cookieTime, '/');
+            setcookie('birth', testInput($_POST['birth']), $cookieTime, '/');
+            setcookie('phone', testInput($_POST['phone']), $cookieTime, '/');
+            echo '<h1>' . $_COOKIE['email'] . '</h1>';
+        } else {
+            echo "<h1>False</h1>";
         }
     ?>  
     <script>
@@ -53,3 +65,11 @@
     </script>
 </body>
 </HTML>
+<?php
+    function testInput($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+?>
