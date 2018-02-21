@@ -56,9 +56,9 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
         // Add datepicker to birthday field
-        $(function() {
-            $('#datepicker').datepicker();
-        })
+        $('#datepicker').datepicker({
+            dateFormat: 'dd-mm-yy'
+        });
     </script>
     <script>
         // Get the modal
