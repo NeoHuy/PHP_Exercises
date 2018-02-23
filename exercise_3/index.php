@@ -21,34 +21,6 @@
             <script>document.getElementById("id01").style.display = 'block';</script>
     <?php
         }
-        
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
-            $email = testInput($_POST['email']);
-            $psw = testInput($_POST['psw']);
-            $birthdate = testInput($_POST['birth']);
-            $phone = testInput($_POST['phone']);
-            $userArray = array(
-                'email' => $email,
-                'psw' => $psw,
-                'birthdate' => $birthdate,
-                'phone' => $phone
-            );
-
-            //Validate email
-            if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $emailErr = "Invalid email format";
-            } 
-
-
-            
-            setcookie('email', testInput($_POST['email']), $cookieTime, '/');
-            setcookie('psw', testInput($_POST['psw']), $cookieTime, '/');
-            setcookie('birth', testInput($_POST['birth']), $cookieTime, '/');
-            setcookie('phone', testInput($_POST['phone']), $cookieTime, '/');
-            
-            //redirect to my_account.php after submit
-            header('Location: my_account.php');
-        }
     ?>
 </body>
 </HTML>

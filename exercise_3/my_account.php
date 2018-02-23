@@ -21,7 +21,7 @@
             <span><?php echo $_COOKIE['psw']; ?></span>
             <br/>
 
-            <label for='birth'>Birthday</label>
+            <label for='birth'>Birthdate</label>
             <span><?php echo $_COOKIE['birth']; ?></span>
             <br/>
 
