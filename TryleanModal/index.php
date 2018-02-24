@@ -6,7 +6,7 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css'>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css'>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
     <div class="container">
@@ -22,26 +22,26 @@
 
             <section class="popupBody">
                 <div class="user_register">
-                    <form>
-                        <label>Full Name</label>
-                        <input type="text" />
-                        <br />
-
+                    <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" id="register_form">
                         <label>Email Address</label>
-                        <input type="email" />
+                        <input type="text" name="email" />
+                        <span><?php echo $emailErr; ?></span>
                         <br />
 
                         <label>Password</label>
-                        <input type="password" />
+                        <input type="password" name="psw" />
                         <br />
 
-                        <div class="checkbox">
-                            <input id="send_updates" type="checkbox" />
-                            <label for="send_updates">Send me occasional email updates</label>
-                        </div>
+                        <label>Date of birth</label>
+                        <input type="text" name="birthdate" />
+                        <br />
+
+                        <label>Phone number</label>
+                        <input type="text" name="phone" />
+                        <br />
 
                         <div class="action_btns">
-                            <div class="one_half last"><a href="#" class="btn btn_red">Register</a></div>
+                            <div class="one_half last"><button type="submit" class="btn btn_red">Register</button></div>
                         </div>
                     </form>
                 </div>
@@ -50,7 +50,7 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src='jquery.leanModal.min.js'></script>
+    <script src='js/jquery.leanModal.min.js'></script>
     <script>
         $('#modal_trigger').leanModal({
             top: 100,
@@ -60,5 +60,31 @@
 
         $(".user_register").show();
     </script>
+
+    <?php
+        
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if(empty($_POST['email'])) {
+                $emailErr = "Please enter email address!";
+            } else {
+                $email = testInput($_POST['email']);
+                if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $emailErr = "Please enter the valid email address";
+                }
+                
+            }
+        }
+
+        function testInput($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+
+            return $data;
+        }
+
+    ?>
 </body>
 </HTML>
+
+
