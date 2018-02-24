@@ -14,21 +14,13 @@
     <h2>Register Form</h2>
     <?php include('register_form.php'); ?>
     <?php include('include_js.php'); ?>
-
-    <?php
-        if(!isset($_COOKIE["email"])) {
+    <script>document.getElementById("id01").style.display = 'block';</script>
+    <!-- <?php
+        // if(!isset($_COOKIE["email"])) {
     ?>
             <script>document.getElementById("id01").style.display = 'block';</script>
     <?php
-        }
-    ?>
+        // }
+    ?> -->
 </body>
 </HTML>
-<?php
-    function testInput($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
-?>

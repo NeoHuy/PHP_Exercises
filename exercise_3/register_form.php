@@ -7,70 +7,86 @@
 
         <div class="container">
             <label for="email"><b>Email (required)</b></label>
-            <input type="email" placeholder="Enter Email" name="email" required>
+            <input type="email" placeholder="Enter Email" name="email">
+            <span><?php echo $emailErr; ?></span>
 
             <label for="psw"><b>Password (required)</b></label>
-            <input type="password" minLength="6" placeholder="Enter Password" name="psw" required>
+            <input type="password" minLength="6" placeholder="Enter Password" name="psw">
+            <span><?php echo $pswErr; ?></span>
 
             <label for="birth"><b>Date of birth (required)</b></label>
-            <input type="text" name="birth" id="datepicker" required>
+            <input type="text" name="birth" id="datepicker">
             <span><?php echo $birthErr; ?></span>
             
             <label for="phone"><b>Phone number (optional)</b></label>
             <input type="text" id="phone" name="phone" maxLength=12>
+            <span><?php echo $phoneErr; ?></span>
 
             <button type="submit" name="submit">Register</button>
         </div>
-    </form>
+        <?php 
+            if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    <?php 
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
-
-            //Validate email
-            if(empty($_POST['email'])) {
-                $emailErr = "Email is required!";
-            } else {
-                $email = testInput($_POST['email']);
-                if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $emailErr = "Invalid email format";
+                //Validate email
+                if(empty($_POST['email'])) {
+                    $emailErr = "Email is required!";
+                } else {
+                    $email = testInput($_POST['email']);
+                    if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                        $emailErr = "Invalid email format";
+                    }
                 }
-            }
 
-            if(empty($_POST['psw'])) {
-                $pswErr = "Password is required!";
-            } else {
-                $psw = testInput($_POST['psw']);
-                if(count($psw) < 6) {
-                    $pswErr = "Password is must more than 5 chars.";
+                if(empty($_POST['psw'])) {
+                    $pswErr = "Password is required!";
+                } else {
+                    $psw = testInput($_POST['psw']);
+                    if(count($psw) < 6) {
+                        $pswErr = "Password is must more than 5 chars.";
+                    }
                 }
-            }
 
-            if(empty($_POST['birth'])) {
-                $birthErr = "Birthdate is required!";
-            } else {
-                $birthdate = $_POST['birth'];
-                if(!validateAge($birthdate)) {
-                    $birthErr = "You must be 18 or older";
+                if(empty($_POST['birth'])) {
+                    $birthErr = "Birthdate is required!";
+                } else {
+                    $birthdate = $_POST['birth'];
+                    if(!validateAge($birthdate)) {
+                        $birthErr = "You must be 18 or older";
+                    }
                 }
-            }
+
+                if(!empty($_POST['phone'])) {
+                    $phone = testInput($_POST['phone']);
+                    if(strlen($phone) >= 13) {
+                        $phoneErr = "Phone number must be 12 or smaller";
+                    }
+                }
+                
+                setcookie('email', testInput($_POST['email']), $cookieTime, '/');
+                setcookie('psw', testInput($_POST['psw']), $cookieTime, '/');
+                setcookie('birth', testInput($_POST['birth']), $cookieTime, '/');
+                setcookie('phone', testInput($_POST['phone']), $cookieTime, '/');
             
-            setcookie('email', testInput($_POST['email']), $cookieTime, '/');
-            setcookie('psw', testInput($_POST['psw']), $cookieTime, '/');
-            setcookie('birth', testInput($_POST['birth']), $cookieTime, '/');
-            setcookie('phone', testInput($_POST['phone']), $cookieTime, '/');
-        
-            //redirect to my_account.php after submit
-            //header('Location: my_account.php');
-        }
+                //redirect to my_account.php after submit
+                //header('Location: my_account.php');
+            }
 
-        function validateAge($birthdate, $age = 18) {
-            if(is_string($birthdate)) {
-                $birthdate = strtotime($birthdate);
+            function validateAge($birthdate, $age = 18) {
+                if(is_string($birthdate)) {
+                    $birthdate = strtotime($birthdate);
+                }
+                if(time() - $birthdate < $age * 31536000) {
+                    return false;
+                }
+                return true;
             }
-            if(time() - $birthdate < $age * 31536000) {
-                return false;
+
+            function testInput($data) {
+                $data = trim($data);
+                $data = stripslashes($data);
+                $data = htmlspecialchars($data);
+                return $data;
             }
-            return true;
-        }
     ?>
+    </form>
 </div>
