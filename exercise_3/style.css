@@ -3,8 +3,7 @@ body {
 }
 
 input[type="text"],
-input[type="password"],
-input[type="email"] {
+input[type="password"] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -28,9 +27,9 @@ button:hover {
 }
 
 .imgcontainer {
-    text-align: center;
+    text-align: left;
     margin: 24px 0 12px 0;
-    position: relative;
+    position: absolute;    
 }
 
 .container {
@@ -67,6 +66,7 @@ button:hover {
 
 /* The close button */
 .close {
+    display:inline-block;
     position: absolute;
     right: 25px;
     top: 0;
