@@ -5,44 +5,48 @@
 <script>
 $(document).ready(function() {
     // jQuery validator
-    $('#modal-form').validate({
-        rules: {
-            email: {
-                required: true,
-                email: true
-            },
-            birth: {
-                required: true
-            },
-            psw: {
-                required: true,
-                minlength: 8
-            },
-            phone: {
-                maxlength: 12
-            }
-        }
-    });
+    // $('#modal-form').validate({
+    //     rules: {
+    //         email: {
+    //             required: true,
+    //             email: true
+    //         },
+    //         birth: {
+    //             required: true
+    //         },
+    //         psw: {
+    //             required: true,
+    //             minlength: 8
+    //         },
+    //         phone: {
+    //             maxlength: 12
+    //         }
+    //     }
+    // });
 
-    jQuery.validator.addMethod("psw", function(value, element) {
-        var specialChars = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
-            //console.log("psw: " + element.value);
-        var result = /*value.length >= 6 &&*/ /\d/.test(value) && /[A-Z]/.test(value) && specialChars.test(value);
-        return result;
-    }, "Your password must be contain at least one number, uppercase letter and special character");
+    // jQuery.validator.addMethod("psw", function(value, element) {
+    //     var specialChars = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+    //         //console.log("psw: " + element.value);
+    //     var result = /*value.length >= 6 &&*/ /[0-9]/.test(value) && /[A-Z]/.test(value) && specialChars.test(value);
+    //     return result;
+    // }, "Your password must be contain at least one number, uppercase letter and special character");
 
-    jQuery.validator.addMethod("birth", function(value, element) {
-        var date = Date.now();
-        console.log("Date: " + date);
-        console.log("birthdate: " + element.value);
-        var birthTemp = element.value.split("-");
-        var birthdate = birthTemp[0] + " " + birthTemp[1] + " " + birthTemp[2];
-        birthdate = birthdate.parse();
-        console.log("Birthdate after converted: " + birthdate.parse());
-    }, "");
+    // jQuery.validator.addMethod("birth", function(value, element) {
+    //     var birthTemp = element.value.split("-");
+    //     var dateOfBirthInMiliseconds = Date.parse(birthTemp[1] + " " + birthTemp[0] + " " + birthTemp[2]);
+    //     var age = Math.floor((Date.now() - dateOfBirthInMiliseconds) / 31536000000);
+    //     console.log("AGE: " + age);
+    //     var message = "";
+    //     if(age < 18) {
+    //        is18years = false;
+    //     } else {
+    //         is18years = true;
+    //     }
+    //     return is18years;
+    // }, "You must be at least 18 or older");
 
     //Cant type anything except number
-    $("#phone").mask("0000-00000000");
+    $("#phone").mask("000000000000");
     $("#datepicker").mask("00-00-0000");
 });
 
