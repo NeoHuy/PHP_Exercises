@@ -17,8 +17,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $pswErr = "Password is required!";
     } else {
         $psw = testInput($_POST['psw']);
-        if(count($psw) < 6) {
-            $pswErr = "Password is must more than 5 chars.";
+        $hasUppercase = preg_match('/[A-Z]/', $psw);
+        $hasNumber = preg_match('/[0-9]/', $psw);
+        $hasSpecial = preg_match('/[!@#$%^&*()\-_=+{};:,<.>]/', $psw);
+        if(strlen($psw) < 8 || !$hasUppercase || !$hasNumber || !$hasSpecial) {
+            $pswErr = "Password is must more than 8 chars and contain at least 1 number, uppercase and special character.";
         }
     }
 
@@ -33,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if(!empty($_POST['phone'])) {
         $phone = testInput($_POST['phone']);
-        if(strlen($phone) >= 13) {
+        if(strlen($phone) > 12) {
             $phoneErr = "Phone number must be 12 or smaller";
         }
     }
@@ -49,15 +52,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 }
 
-// // function validateAge($birthdate, $age = 18) {
-// //     if(is_string($birthdate)) {
-// //         $birthdate = strtotime($birthdate);
-// //     }
-// //     if(time() - $birthdate < $age * 31536000) {
-// //         return false;
-// //     }
-// //     return true;
-// // }
+function validateAge($birthdate, $age = 18) {
+    if(is_string($birthdate)) {
+        $birthdate = strtotime($birthdate);
+    }
+    if(time() - $birthdate < $age * 31536000) {
+        return false;
+    }
+    return true;
+}
 
 function testInput($data) {
     $data = trim($data);
