@@ -4,32 +4,31 @@
 <script src="js/jquery.mask.min.js"></script>
 <script>
 $(document).ready(function() {
-    // jQuery validator
-    // $('#modal-form').validate({
-    //     rules: {
-    //         email: {
-    //             required: true,
-    //             email: true
-    //         },
-    //         birth: {
-    //             required: true
-    //         },
-    //         psw: {
-    //             required: true,
-    //             minlength: 8
-    //         },
-    //         phone: {
-    //             maxlength: 12
-    //         }
-    //     }
-    // });
+    $('#modal-form').validate({
+        rules: {
+            email: {
+                required: true,
+                email: true
+            },
+            birth: {
+                required: true
+            },
+            psw: {
+                required: true,
+                minlength: 8
+            },
+            phone: {
+                maxlength: 12
+            }
+        }
+    });
 
-    // jQuery.validator.addMethod("psw", function(value, element) {
-    //     var specialChars = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
-    //         //console.log("psw: " + element.value);
-    //     var result = /*value.length >= 6 &&*/ /[0-9]/.test(value) && /[A-Z]/.test(value) && specialChars.test(value);
-    //     return result;
-    // }, "Your password must be contain at least one number, uppercase letter and special character");
+    jQuery.validator.addMethod("psw", function(value, element) {
+        var specialChars = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+            //console.log("psw: " + element.value);
+        var result = /*value.length >= 6 &&*/ /[0-9]/.test(value) && /[A-Z]/.test(value) && specialChars.test(value);
+        return result;
+    }, "Your password must be contain at least one number, uppercase letter and special character");
 
     // jQuery.validator.addMethod("birth", function(value, element) {
     //     var birthTemp = element.value.split("-");

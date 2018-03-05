@@ -41,21 +41,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     
-// //     setcookie('email', testInput($_POST['email']), $cookieTime, '/');
-// //     setcookie('psw', testInput($_POST['psw']), $cookieTime, '/');
-// //     setcookie('birth', testInput($_POST['birth']), $cookieTime, '/');
-// //     setcookie('phone', testInput($_POST['phone']), $cookieTime, '/');
+//     setcookie('email', testInput($_POST['email']), $cookieTime, '/');
+//     setcookie('psw', testInput($_POST['psw']), $cookieTime, '/');
+//     setcookie('birth', testInput($_POST['birth']), $cookieTime, '/');
+//     setcookie('phone', testInput($_POST['phone']), $cookieTime, '/');
 
-// //     //redirect to my_account.php after submit
-// //     //header('Location: my_account.php');
-// // }
+//     //redirect to my_account.php after submit
+//     //header('Location: my_account.php');
+    if(!$emailErr || !$pswErr || !$birthErr || !$phoneErr) {
+
+    }
 
 }
 
 function validateAge($birthdate, $age = 18) {
-    if(is_string($birthdate)) {
-        $birthdate = strtotime($birthdate);
-    }
+    $birthdate = strtotime($birthdate);
     if(time() - $birthdate < $age * 31536000) {
         return false;
     }
