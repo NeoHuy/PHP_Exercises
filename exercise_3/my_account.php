@@ -1,3 +1,8 @@
+<?php
+    if(!isset($_COOKIE['info'])) {
+        header('Location: index.php');
+    }
+?>
 <!DOCTYPE HTML>
 <HTML>
 <head>
@@ -5,11 +10,7 @@
     <meta name="viewport" content="width=device_width, initial-scale=1">
 </head>
 <body>
-    <?php
-        if(!isset($_COOKIE['email'])) {
-            header('Location: index.php');
-        }
-    ?>
+    
     <div class="container">
         <div class='container_title'><h1>User infomation</h1></div>
         <div class='info'>

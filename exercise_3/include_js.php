@@ -30,19 +30,19 @@ $(document).ready(function() {
         return result;
     }, "Your password must be contain at least one number, uppercase letter and special character");
 
-    // jQuery.validator.addMethod("birth", function(value, element) {
-    //     var birthTemp = element.value.split("-");
-    //     var dateOfBirthInMiliseconds = Date.parse(birthTemp[1] + " " + birthTemp[0] + " " + birthTemp[2]);
-    //     var age = Math.floor((Date.now() - dateOfBirthInMiliseconds) / 31536000000);
-    //     console.log("AGE: " + age);
-    //     var message = "";
-    //     if(age < 18) {
-    //        is18years = false;
-    //     } else {
-    //         is18years = true;
-    //     }
-    //     return is18years;
-    // }, "You must be at least 18 or older");
+    jQuery.validator.addMethod("birth", function(value, element) {
+        var birthTemp = element.value.split("-");
+        var dateOfBirthInMiliseconds = Date.parse(birthTemp[1] + " " + birthTemp[0] + " " + birthTemp[2]);
+        var age = Math.floor((Date.now() - dateOfBirthInMiliseconds) / 31536000000);
+        console.log("AGE: " + age);
+        var message = "";
+        if(age < 18) {
+           are18years = false;
+        } else {
+            are18years = true;
+        }
+        return are18years;
+    }, "You must be at least 18 or older");
 
     //Cant type anything except number
     $("#phone").mask("000000000000");

@@ -1,7 +1,8 @@
-<!DOCTYPE HTML>
-<?php 
-    $cookieTime = time() + 10; // 30 days
+<?php
+    require_once('form_handle.php');
 ?>
+
+<!DOCTYPE HTML>
 <HTML>
 <head>
     <meta name="viewport" content="width=device-width initial-scale=1">
