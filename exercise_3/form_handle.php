@@ -44,15 +44,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $phoneErr = "Phone number must be 12 or smaller";
         }
     }
-    
+
     if(!$emailErr && !$pswErr && !$birthErr && !$phoneErr) {
-        $info = array($email, $psw, $birth, $phone);
+        $info = array("email" => $email, "password" => $psw, "birthdate" => $birthdate, "phone" => $phone);
         $info = json_encode($info);
         //setcookie(" info", json_encode($info), $cookieTime, '/');
         setcookie("info", $info, $cookieTime, "/");
-    
-        //redirect to my_account.php after submit
-        header('Location: my_account.php');
+        //redirect to my_account.php after validate
+        
+        if(strpos($_SERVER['PHP_SELF'], 'index')) {
+            header('Location: my_account.php');
+            exit();
+        } else {
+            header('Refresh: 0');
+        }
     }
 }
 

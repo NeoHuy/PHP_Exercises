@@ -1,35 +1,37 @@
 <?php
-    if(!isset($_COOKIE['info'])) {
-        header('Location: index.php');
+    if(isset($_COOKIE['info'])) {
+        $cookie = json_decode($_COOKIE['info']);
+    } else {
+        require_once('form_handle.php');
     }
+
+    echo "<h1>Basename: " . $_SERVER['PHP_SELF'] . "</h1>";
 ?>
 <!DOCTYPE HTML>
 <HTML>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device_width, initial-scale=1">
+    <?php include('include_css.php'); ?>
 </head>
 <body>
     
     <div class="container">
-        <div class='container_title'><h1>User infomation</h1></div>
-        <div class='info'>
-            <label for='email'>Email</label>
-            <span><?php echo $_COOKIE['email']; ?></span>
-            <br/>
-
-            <label for='psw'>Password</label>
-            <span><?php echo $_COOKIE['psw']; ?></span>
-            <br/>
-
-            <label for='birth'>Birthdate</label>
-            <span><?php echo $_COOKIE['birth']; ?></span>
-            <br/>
-
-            <label for='phone'>Phone</label>
-            <span><?php echo $_COOKIE['phone']; ?></span>
-            
-        </div>
+        <?php 
+        if(!$_COOKIE['info']) {
+            echo '<h3>You are not signup!</h3>';
+            echo '<button type="submit" id="register" onclick="showRegisterForm()">Register</button>';
+        } else {
+            include('info_table.php');
+        }
+        ?>
     </div>
+    <?php include('register_form.php'); ?>
+    <?php include('include_js.php'); ?>
+    <script>
+        function showRegisterForm() {
+            document.getElementById("id01").style.display = 'block';
+        }
+    </script>
 </body>
 </HTML>
