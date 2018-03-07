@@ -4,8 +4,6 @@
     } else {
         require_once('form_handle.php');
     }
-
-    echo "<h1>Basename: " . $_SERVER['PHP_SELF'] . "</h1>";
 ?>
 <!DOCTYPE HTML>
 <HTML>
@@ -28,10 +26,5 @@
     </div>
     <?php include('register_form.php'); ?>
     <?php include('include_js.php'); ?>
-    <script>
-        function showRegisterForm() {
-            document.getElementById("id01").style.display = 'block';
-        }
-    </script>
 </body>
 </HTML>

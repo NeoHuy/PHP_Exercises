@@ -57,4 +57,9 @@ $('#datepicker').datepicker({
 
 // Get the modal
 var modal = document.getElementById('id01');
+
+//Show a form
+function showRegisterForm() {
+    modal.style.display = 'block';
+}
 </script>

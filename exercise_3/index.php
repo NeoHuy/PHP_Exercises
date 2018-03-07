@@ -14,16 +14,20 @@
 </head>
 <body>
     
-    <h2>Register Form</h2>
-    <?php include('register_form.php'); ?>
-    <?php include('include_js.php'); ?>
-    <script>document.getElementById("id01").style.display = 'block';</script>
-    <!-- <?php
-        // if(!isset($_COOKIE["email"])) {
-    ?>
-            <script>document.getElementById("id01").style.display = 'block';</script>
+    
     <?php
-        // }
-    ?> -->
+    if(!isset($_COOKIE['info'])) {
+    ?>
+        <h2>Register Form</h2>
+        <?php include('register_form.php'); ?>
+        <?php include('include_js.php'); ?>
+        <script>showRegisterForm();</script>
+    <?php
+    } else {
+    ?>
+        You signed up! Go to <a href='my_account.php'>account page</a>
+    <?php
+    }
+    ?>
 </body>
 </HTML>
