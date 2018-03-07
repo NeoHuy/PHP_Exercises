@@ -11,7 +11,8 @@ $(document).ready(function() {
                 email: true
             },
             birth: {
-                required: true
+                required: true,
+                date: true
             },
             psw: {
                 required: true,

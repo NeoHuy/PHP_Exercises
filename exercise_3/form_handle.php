@@ -1,7 +1,7 @@
 <?php 
 $email = $psw = $birth = $phone = '';
 $emailErr = $pswErr = $birthErr = $phoneErr = '';
-$cookieTime = time() + 10;
+$cookieTime = time() + 60 * 60 * 24 * 30; // 1 month
 
 
 
