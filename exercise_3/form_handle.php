@@ -33,8 +33,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $birthErr = "Birthdate is required!";
     } else {
         $birthdate = testInput($_POST['birth']);
-        if(!validateAge($birthdate)) {
-            $birthErr = "You must be 18 or older";
+        if(!checkIsAValidDate($birthdate)) {
+            $birthErr = "Please enter a valid date";
+        } else {
+            if(!validateAge($birthdate)) {
+                $birthErr = "You must be 18 or older";
+            }
         }
     }
 
@@ -59,6 +63,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             header('Refresh: 0');
         }
     }
+}
+
+function checkIsAValidDate($dateString) {
+    return (bool)strtotime($dateString);
 }
 
 function validateAge($birthdate, $age = 18) {
