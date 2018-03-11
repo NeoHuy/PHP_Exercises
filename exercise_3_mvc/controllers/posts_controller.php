@@ -19,7 +19,8 @@
         }
 
         public function add() {
-            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            require_once('views/posts/add.php');
+            if(isset($_POST['add_submit'])) {
                 $authorErr = $contentErr = '';
                 $author = $content = '';
                 if(empty($_POST['author'])) {
@@ -34,11 +35,10 @@
                     $content = $_POST['content'];
                 }
 
-                if(!$author && !$content) {
+                if(!empty($author) && !empty($content)) {
                     Post::add($author, $content);
                 }
             }
-            require_once('views/posts/add.php');
         }
     }
 ?>

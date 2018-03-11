@@ -1,5 +1,5 @@
 <p>Add more author and content in here</p>
-<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
     <label for="error">
     <?php 
     echo isset($authorErr) ? $authorErr : '';
@@ -17,5 +17,5 @@
     <textarea name="content"></textarea>
     <br/>
 
-    <button type="submit" name="add">Add</button>
+    <button type="submit" name="add_submit">Add</button>
 </form>

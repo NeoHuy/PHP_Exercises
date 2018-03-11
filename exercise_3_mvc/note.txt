@@ -1,0 +1,2 @@
+- Dùng index.php để điều phối tới các controller
+    + Khi người dùng nhập url thì đọc file trong /controller để chạy đúng controller đó
